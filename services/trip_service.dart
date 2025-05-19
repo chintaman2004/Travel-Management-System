@@ -21,4 +21,8 @@ class TripService {
   }
 
   List<Trip> getAll() => _trips;
+
+  void addTrip(String destination, double price) {}
+
+  getAllTrips() {}
 }

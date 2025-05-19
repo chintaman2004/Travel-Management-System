@@ -1,5 +1,3 @@
-import 'models/customer.dart';
-import 'models/trip.dart';
 import 'services/customer_service.dart';
 import 'services/trip_service.dart';
 import 'services/booking_service.dart';

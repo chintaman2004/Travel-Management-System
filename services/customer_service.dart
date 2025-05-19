@@ -21,4 +21,8 @@ class CustomerService {
   }
 
   List<Customer> getAll() => _customers;
+
+  void addCustomer(String name, String email) {}
+
+  getAllCustomers() {}
 }

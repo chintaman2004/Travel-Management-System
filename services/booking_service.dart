@@ -1,6 +1,4 @@
 import '../models/booking.dart';
-import '../models/customer.dart';
-import '../models/trip.dart';
 import '../utils/input.dart';
 import 'customer_service.dart';
 import 'trip_service.dart';
@@ -26,4 +24,8 @@ class BookingService {
       }
     }
   }
+
+  void bookTrip(int parse, int parse2) {}
+
+  void printAllBookings(allCustomers, allTrips) {}
 }
