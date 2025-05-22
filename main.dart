@@ -33,12 +33,12 @@ void main() {
         tripService.addTrip(destination, price);
         break;
       case '3':
-        for (var c in customerService.getAllCustomers()) {
+        for (var c in customerService.getAll()) {
           print("${c.id}: ${c.name} - ${c.email}");
         }
         break;
       case '4':
-        for (var t in tripService.getAllTrips()) {
+        for (var t in tripService.getAll()) {
           print("${t.id}: ${t.destination} - \$${t.price}");
         }
         break;
