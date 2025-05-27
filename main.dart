@@ -1,63 +1,55 @@
+import 'dart:io';
 import 'services/customer_service.dart';
 import 'services/trip_service.dart';
 import 'services/booking_service.dart';
+import 'services/finance_service.dart';
+import 'services/sales_service.dart';
+import 'services/hr_service.dart';
+import 'services/auth_service.dart';
 import 'utils/input.dart';
 
 void main() {
-  final customerService = CustomerService();
-  final tripService = TripService();
-  final bookingService = BookingService();
+  AuthService authService = AuthService();
+  if (!authService.login()) {
+    exit(1);
+  }
+
+  CustomerService customerService = CustomerService();
+  TripService tripService = TripService();
+  BookingService bookingService = BookingService();
+  FinanceService financeService = FinanceService();
+  SalesService salesService = SalesService();
+  HRService hrService = HRService();
 
   while (true) {
-    print("\nTravel Management System");
-    print("1. Add Customer");
-    print("2. Add Trip");
-    print("3. View Customers");
-    print("4. View Trips");
-    print("5. Book a Trip");
-    print("6. View Bookings");
+    print("\n=== Travel Management CLI ===");
+    print("1. Customer Management");
+    print("2. Trip Management");
+    print("3. Booking Management");
+    print("4. Finance Management");
+    print("5. Sales Management");
+    print("6. HR Management");
     print("0. Exit");
 
-    String choice = readInput("Enter your choice: ");
+    String choice = readInput("Select an option: ");
 
-    switch (choice) {
-      case '1':
-        String name = readInput("Enter customer name: ");
-        String email = readInput("Enter customer email: ");
-        customerService.addCustomer(name, email);
-        break;
-      case '2':
-        String destination = readInput("Enter trip destination: ");
-        String priceStr = readInput("Enter trip price: ");
-        double price = double.tryParse(priceStr) ?? 0;
-        tripService.addTrip(destination, price);
-        break;
-      case '3':
-        for (var c in customerService.getAll()) {
-          print("${c.id}: ${c.name} - ${c.email}");
-        }
-        break;
-      case '4':
-        for (var t in tripService.getAll()) {
-          print("${t.id}: ${t.destination} - \$${t.price}");
-        }
-        break;
-      case '5':
-        String custId = readInput("Enter customer ID: ");
-        String tripId = readInput("Enter trip ID: ");
-        bookingService.bookTrip(int.parse(custId), int.parse(tripId));
-        break;
-      case '6':
-        bookingService.printAllBookings(
-          customerService.getAllCustomers(),
-          tripService.getAllTrips(),
-        );
-        break;
-      case '0':
-        print("Goodbye!");
-        return;
-      default:
-        print("Invalid option. Try again.");
+    if (choice == '1') {
+      customerService.menu();
+    } else if (choice == '2') {
+      tripService.menu();
+    } else if (choice == '3') {
+      bookingService.menu(customerService, tripService);
+    } else if (choice == '4') {
+      financeService.menu();
+    } else if (choice == '5') {
+      salesService.menu();
+    } else if (choice == '6') {
+      hrService.menu();
+    } else if (choice == '0') {
+      print("Exiting...");
+      exit(0);
+    } else {
+      print("Invalid choice. Try again.");
     }
   }
 }

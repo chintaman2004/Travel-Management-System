@@ -2,7 +2,7 @@ import '../models/sale.dart';
 import '../utils/input.dart';
 
 class SalesService {
-  final List<Sale> _sales = [];
+  List<Sale> _sales = <Sale>[];
 
   void menu() {
     print("\n-- Sales Management --");
@@ -13,12 +13,14 @@ class SalesService {
       int tid = int.parse(readInput("Trip ID: "));
       int qty = int.parse(readInput("Quantity: "));
       int id = _sales.length + 1;
-      _sales.add(Sale(id, tid, qty));
+      Sale sale = Sale(id, tid, qty);
+      _sales.add(sale);
       print("Sale recorded.");
     } else {
-      _sales.forEach(
-        (s) => print("Sale ID ${s.id}: ${s.quantity} of Trip ${s.tripId}"),
-      );
+      for (int i = 0; i < _sales.length; i++) {
+        Sale s = _sales[i];
+        print("Sale ID ${s.id}: ${s.quantity} of Trip ${s.tripId}");
+      }
     }
   }
 }

@@ -2,7 +2,7 @@ import '../models/employee.dart';
 import '../utils/input.dart';
 
 class HRService {
-  final List<Employee> _employees = [];
+  List<Employee> _employees = <Employee>[];
 
   void menu() {
     print("\n-- HR Management --");
@@ -13,10 +13,14 @@ class HRService {
       String name = readInput("Name: ");
       String role = readInput("Role: ");
       int id = _employees.length + 1;
-      _employees.add(Employee(id, name, role));
+      Employee emp = Employee(id, name, role);
+      _employees.add(emp);
       print("Employee added.");
     } else {
-      _employees.forEach((e) => print("${e.id}: ${e.name} - ${e.role}"));
+      for (int i = 0; i < _employees.length; i++) {
+        Employee e = _employees[i];
+        print("${e.id}: ${e.name} - ${e.role}");
+      }
     }
   }
 }

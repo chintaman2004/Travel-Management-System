@@ -2,7 +2,7 @@ import '../models/trip.dart';
 import '../utils/input.dart';
 
 class TripService {
-  final List<Trip> _trips = [];
+  List<Trip> _trips = <Trip>[];
 
   void menu() {
     print("\n-- Trip Management --");
@@ -13,16 +13,18 @@ class TripService {
       String dest = readInput("Destination: ");
       double price = double.parse(readInput("Price: "));
       int id = _trips.length + 1;
-      _trips.add(Trip(id, dest, price));
+      Trip trip = Trip(id, dest, price);
+      _trips.add(trip);
       print("Trip added.");
     } else {
-      _trips.forEach((t) => print("${t.id}: ${t.destination} - \$${t.price}"));
+      for (int i = 0; i < _trips.length; i++) {
+        Trip t = _trips[i];
+        print("${t.id}: ${t.destination} - \$${t.price}");
+      }
     }
   }
 
-  List<Trip> getAll() => _trips;
-
-  void addTrip(String destination, double price) {}
-
-  getAllTrips() {}
+  List<Trip> getAll() {
+    return _trips;
+  }
 }

@@ -2,7 +2,7 @@ import '../models/payment.dart';
 import '../utils/input.dart';
 
 class FinanceService {
-  final List<Payment> _payments = [];
+  List<Payment> _payments = <Payment>[];
 
   void menu() {
     print("\n-- Finance Management --");
@@ -13,14 +13,14 @@ class FinanceService {
       int bid = int.parse(readInput("Booking ID: "));
       double amt = double.parse(readInput("Amount: "));
       int id = _payments.length + 1;
-      _payments.add(Payment(id, bid, amt));
+      Payment payment = Payment(id, bid, amt);
+      _payments.add(payment);
       print("Payment recorded.");
     } else {
-      _payments.forEach(
-        (p) => print(
-          "Payment ID ${p.id}: \$${p.amount} for Booking ${p.bookingId}",
-        ),
-      );
+      for (int i = 0; i < _payments.length; i++) {
+        Payment p = _payments[i];
+        print("Payment ID ${p.id}: \$${p.amount} for Booking ${p.bookingId}");
+      }
     }
   }
 }

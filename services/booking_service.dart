@@ -1,10 +1,12 @@
 import '../models/booking.dart';
+import '../models/customer.dart';
+import '../models/trip.dart';
 import '../utils/input.dart';
 import 'customer_service.dart';
 import 'trip_service.dart';
 
 class BookingService {
-  final List<Booking> _bookings = [];
+  List<Booking> _bookings = <Booking>[];
 
   void menu(CustomerService cs, TripService ts) {
     print("\n-- Booking Management --");
@@ -14,18 +16,18 @@ class BookingService {
     if (choice == '1') {
       int cid = int.parse(readInput("Customer ID: "));
       int tid = int.parse(readInput("Trip ID: "));
-      _bookings.add(Booking(cid, tid));
+      Booking booking = Booking(cid, tid);
+      _bookings.add(booking);
       print("Booking added.");
     } else {
-      for (var b in _bookings) {
-        var c = cs.getAll().firstWhere((x) => x.id == b.customerId);
-        var t = ts.getAll().firstWhere((x) => x.id == b.tripId);
+      List<Customer> customers = cs.getAll();
+      List<Trip> trips = ts.getAll();
+      for (int i = 0; i < _bookings.length; i++) {
+        Booking b = _bookings[i];
+        Customer c = customers.firstWhere((Customer x) => x.id == b.customerId);
+        Trip t = trips.firstWhere((Trip x) => x.id == b.tripId);
         print("${c.name} booked ${t.destination} for \$${t.price}");
       }
     }
   }
-
-  void bookTrip(int parse, int parse2) {}
-
-  void printAllBookings(allCustomers, allTrips) {}
 }
