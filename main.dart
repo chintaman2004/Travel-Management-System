@@ -22,16 +22,16 @@ void main() {
   HRService hrService = HRService();
 
   while (true) {
-    print("\n=== Travel Management CLI ===");
+    print("\n=== Travel Management Sustem ===");
     print("1. Customer Management");
     print("2. Trip Management");
     print("3. Booking Management");
     print("4. Finance Management");
     print("5. Sales Management");
     print("6. HR Management");
-    print("0. Exit");
+    print("0. Quit");
 
-    String choice = readInput("Select an option: ");
+    String choice = readInput("Choose an option: ");
 
     if (choice == '1') {
       customerService.menu();
