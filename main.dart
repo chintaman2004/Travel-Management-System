@@ -22,7 +22,7 @@ void main() {
   HRService hrService = HRService();
 
   while (true) {
-    print("\n=== Travel Management ===");
+    print("\n=== Travel Management System ===");
     print("1. Customer Management");
     print("2. Trip Management");
     print("3. Booking Management");
@@ -31,7 +31,7 @@ void main() {
     print("6. HR Management");
     print("0. Quit");
 
-    String choice = readInput("Choose an option: ");
+    String choice = readInput("Choose from below list: ");
 
     if (choice == '1') {
       customerService.menu();
@@ -49,7 +49,7 @@ void main() {
       print("Exiting...");
       exit(0);
     } else {
-      print("Invalid choice. Try again.");
+      print("Invalid choice.Please choose from list above Try again.");
     }
   }
 }
