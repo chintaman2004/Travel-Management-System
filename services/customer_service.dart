@@ -7,7 +7,7 @@ class CustomerService {
   void menu() {
     print("\n-- Customer Management --");
     print("1. Add Customer");
-    print("2. View Customers");
+    print("2. View Customer /s");
     String choice = readInput("Select: ");
     if (choice == '1') {
       String name = readInput("Name: ");
