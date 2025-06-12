@@ -10,7 +10,7 @@ class BookingService {
 
   void menu(CustomerService cs, TripService ts) {
     print("\n-- Booking Management --");
-    print("1. Book a Trip");
+    print("1. Book Trip");
     print("2. View Bookings");
     String choice = readInput("Select: ");
     if (choice == '1') {
