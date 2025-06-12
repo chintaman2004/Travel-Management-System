@@ -22,7 +22,7 @@ void main() {
   HRService hrService = HRService();
 
   while (true) {
-    print("\n=== (Travel Management System) Travel Management System ===");
+    print("\n=== (TMS) Travel Management System ===");
     print("1. Customer Management");
     print("2. Trip Management");
     print("3. Booking Management");
