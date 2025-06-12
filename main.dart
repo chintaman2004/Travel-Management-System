@@ -31,7 +31,7 @@ void main() {
     print("6. HR Management");
     print("0. Quit");
 
-    String choice = readInput("Choose from below list: ");
+    String choice = readInput("Choose from below: ");
 
     if (choice == '1') {
       customerService.menu();
@@ -49,7 +49,7 @@ void main() {
       print("Exiting...");
       exit(0);
     } else {
-      print("Invalid choice.Please choose from list above Try again.");
+      print("Invalid choice. Please choose from list above Try again.");
     }
   }
 }
